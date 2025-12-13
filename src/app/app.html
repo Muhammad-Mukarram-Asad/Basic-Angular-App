@@ -1,4 +1,10 @@
 <h1>Personal Calendar App</h1>
 
-<app-my-dashboard></app-my-dashboard>
-<app-my-tasks></app-my-tasks>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a> |
+  <a routerLink="/tasks">Tasks</a>
+</nav>
+
+<hr />
+
+<router-outlet></router-outlet>

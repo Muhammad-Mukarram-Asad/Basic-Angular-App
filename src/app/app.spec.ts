@@ -1,23 +1,31 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { App } from './app';
+import { routes } from './app.routes';
 
-describe('App', () => {
+describe('App Routing', () => {
+  let router: Router;
+  let location: Location;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [provideRouter(routes)],
     }).compileComponents();
+
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('should navigate to /dashboard', async () => {
+    await router.navigate(['/dashboard']);
+    expect(location.path()).toBe('/dashboard');
   });
 
-  // it('should render title', async () => {
-  //   const fixture = TestBed.createComponent(App);
-  //   await fixture.whenStable();
-  //   const compiled = fixture.nativeElement as HTMLElement;
-  //   expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-basic-app');
-  // });
+  it('should navigate to /tasks', async () => {
+    await router.navigate(['/tasks']);
+    expect(location.path()).toBe('/tasks');
+  });
 });
