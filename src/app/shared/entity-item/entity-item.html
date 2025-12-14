@@ -1,0 +1,22 @@
+<div class="entity">
+
+  <!-- TASK -->
+  <div *ngIf="isTask(entity)">
+    ✅ Task: {{ entity.title }}
+    <span *ngIf="entity.completed">(Done)</span>
+    <span *ngIf="!entity.completed">(Pending)</span>
+  </div>
+
+  <!-- NOTE -->
+  <div *ngIf="isNote(entity)">
+    📝 Note: {{ entity.title }}
+    <small>{{ entity.content }}</small>
+  </div>
+
+  <!-- EVENT -->
+  <div *ngIf="isEvent(entity)">
+    📅 Event: {{ entity.title }}
+    <strong>{{ entity.date }}</strong>
+  </div>
+
+</div>

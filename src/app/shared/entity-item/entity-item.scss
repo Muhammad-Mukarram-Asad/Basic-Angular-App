@@ -1,0 +1,25 @@
+.entity {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: #f9f9f9;
+  border-left: 4px solid #999;
+
+  small {
+    display: block;
+    color: #555;
+  }
+}
+
+/* Type-specific styling */
+:host-context(.task) .entity {
+  border-left-color: #1976d2;
+}
+
+:host-context(.note) .entity {
+  border-left-color: #388e3c;
+}
+
+:host-context(.event) .entity {
+  border-left-color: #f57c00;
+}

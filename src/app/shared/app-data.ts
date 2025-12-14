@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+export type CalendarEntity =
+  | { type: 'task'; title: string; completed: boolean }
+  | { type: 'note'; title: string; content: string }
+  | { type: 'event'; title: string; date: string };
 
 @Injectable({
   providedIn: 'root', // makes this service global (singleton)
@@ -8,7 +12,10 @@ import { Injectable } from '@angular/core';
 // @Injectable() → marks class as a service
 // providedIn: 'root' → one global instance
 
+
+
 export class AppDataService {
+  
   // Global typed properties
   appName: string = 'Personal Calendar App';
   currentUser: {
@@ -29,4 +36,11 @@ export class AppDataService {
   getAchievedPercentage():string {
     return ((this.completedTasks / this.totalTasks) * 100).toFixed(2);
   }
+
+  entities: CalendarEntity[] = [
+    { type: 'task', title: 'Study Angular', completed: false },
+    { type: 'note', title: 'Lecture Notes', content: 'ngIf and ngFor' },
+    { type: 'event', title: 'Exam', date: '2025-12-20' },
+    { type: 'task', title: 'Submit Assignment', completed: true }
+  ];
 }
